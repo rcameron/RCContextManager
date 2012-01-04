@@ -105,7 +105,7 @@
 {
 #ifdef DEBUG
   if (dispatch_get_current_queue() != _readQueue)
-    DLog(@"Accessing [ContextManager readContext] on wrong dispatch_queue!");
+    NSLog(@"Accessing [ContextManager readContext] on wrong dispatch_queue!");
 #endif
   
   
@@ -130,7 +130,7 @@
 {
 #ifdef DEBUG
   if (dispatch_get_current_queue() != _writeQueue)
-    DLog(@"Accessing [ContextManager writeContext] on wrong dispatch_queue!");
+    NSLog(@"Accessing [ContextManager writeContext] on wrong dispatch_queue!");
 #endif  
   
   if (_writeContext != nil)
