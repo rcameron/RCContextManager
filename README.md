@@ -40,3 +40,6 @@ dispatch_async([[RCContextManager sharedInstance] writeQueue], ^{
     });
 ```
 
+Logging
+=======
+When the debug flag is set, instances where a context is accessed via the wrong queue will be logged to the console.
