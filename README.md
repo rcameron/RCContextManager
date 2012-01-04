@@ -12,9 +12,7 @@ dispatch_async([[RCContextManager sharedInstance] readQueue], ^{
                                               inManagedObjectContext:[[RCContextManager sharedInstance] readContext]];
     [fetchRequest setEntity:entity];
     
-    __block NSError *error;
-    
-    [self setArray:[[[RCContextManager sharedInstance] readContext] executeFetchRequest:fetchRequest error:&error]];
+    [self setArray:[[[RCContextManager sharedInstance] readContext] executeFetchRequest:fetchRequest error:nil]];
     
     [fetchRequest release];
     
@@ -28,14 +26,11 @@ Write via the writeQueue and writeContext
 
 ```objective-c
 dispatch_async([[RCContextManager sharedInstance] writeQueue], ^{
-      MyObject *myObject = (MyObject *)[[[RCContextManager sharedInstance] writeContext] existingObjectWithID:selectedId error:nil];
+      MyObject *anObject = (MyObject *)[[[RCContextManager sharedInstance] writeContext] existingObjectWithID:selectedId error:nil];
       
-      if (myObject) {
-        [[[RCContextManager sharedInstance] writeContext] deleteObject:myObject];
-        
-        error = nil;
-        if (![[[RCContextManager sharedInstance] writeContext] save:&error])
-          NSLog(@"error = %@", [error  localizedDescription]);
+      if (anObject) {
+        [[[RCContextManager sharedInstance] writeContext] deleteObject:anObject];
+        [[[RCContextManager sharedInstance] writeContext] save:nil];
       }
     });
 ```
