@@ -157,7 +157,7 @@
   {
     return __managedObjectModel;
   }
-  NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"GrokkingRecipes" withExtension:@"momd"];
+  NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"RCContextManager" withExtension:@"momd"];
   __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
   return __managedObjectModel;
 }
@@ -173,7 +173,7 @@
     return __persistentStoreCoordinator;
   }
   
-  NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GrokkingRecipes.sqlite"];
+  NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"RCContextManager.sqlite"];
   
   NSError *error = nil;
   __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
